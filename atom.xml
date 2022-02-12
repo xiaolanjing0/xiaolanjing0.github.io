@@ -23,12 +23,13 @@
     <published>2022-02-11T16:45:53.000Z</published>
     <updated>2022-02-11T17:05:08.598Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Win10系统多了3D对象文件夹怎么办？"><a href="#Win10系统多了3D对象文件夹怎么办？" class="headerlink" title="Win10系统多了3D对象文件夹怎么办？"></a>Win10系统多了3D对象文件夹怎么办？</h1><ul><li>Win10去掉3D对象文件夹：</li></ul><p>1、按下WIN+R，然后输入regedit 回车；</p><p>2、然后找到：</p><p>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\</p><p>3、找到3D对象文件夹对应的{0DB7E03F-FC29-4DC6-9020-FF41B59E513A} 项，删除</p><p>4、然后我们再打开</p><p>HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace</p><p>5、继续删除{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}</p><p>6、退出注册表，刷新一下，就会发现3D对象文件夹不见了。  </p><p>好了win10系统去掉3D对象文件夹的方法就为大家介绍到这里啦，希望本教程对大家能有所帮助。</p><p><img src="https://img1.baidu.com/it/u=3077624935,2762228087&fm=26&fmt=auto"></p>]]></content>
-    
     
       
       
-    <summary type="html">&lt;h1 id=&quot;Win10系统多了3D对象文件夹怎么办？&quot;&gt;&lt;a href=&quot;#Win10系统多了3D对象文件夹怎么办？&quot; class=&quot;headerlink&quot; title=&quot;Win10系统多了3D对象文件夹怎么办？&quot;&gt;&lt;/a&gt;Win10系统多了3D对象文件夹怎么办？&lt;/h1&gt;&lt;</summary>
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Win10系统多了3D对象文件夹怎么办？&quot;&gt;&lt;a href=&quot;#Win10系统多了3D对象文件夹怎么办？&quot; class=&quot;headerlink&quot;</summary>
+        
       
     
     
@@ -45,12 +46,13 @@
     <published>2022-02-10T16:25:02.352Z</published>
     <updated>2022-02-10T16:25:02.353Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
     
       
       
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
       
     
     
