@@ -4,11 +4,30 @@
   
     
     <entry>
+      <title>如何清理藏在你硬盘里的宝物</title>
+      <link href="/2022/02/14/ru-he-qing-li-cang-zai-ni-ying-pan-li-de-bao-wu/"/>
+      <url>/2022/02/14/ru-he-qing-li-cang-zai-ni-ying-pan-li-de-bao-wu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="如何清理藏在你硬盘里的宝物"><a href="#如何清理藏在你硬盘里的宝物" class="headerlink" title="如何清理藏在你硬盘里的宝物"></a>如何清理藏在你硬盘里的宝物</h1><p>事情是这样的 @(泪)，前几天，为了给我的 256G 的 手机做个备份，好降级 MIUI12，发现我 256G 的破 SSD 居然只剩下 10G 了，不知原因如何，于是在网上找了点分析硬盘空间的小工具。  </p><ul><li>工具</li></ul><p>工欲善其事必先利其器，没有工具的话咱这波估计只能手翻（狗头）<br><a href="https://cdn.hyh.ink/cdn/treesizepropjb.7z">下载Link</a><br>TreeSize Pro 可以快速的扫描文件然后直观地告诉你磁盘中文件的分布情况，就像这样<br><img src="https://cdn.hyh.ink/pics/2020/08/21/imagec9a862ce9c3b5ff0.png#vwid=945&vhei=532">  </p><h2 id="开始整活"><a href="#开始整活" class="headerlink" title="开始整活"></a>开始整活</h2><p>点击 install TreeSize.bat 开始安装<br>安装后打开桌面上的 Treesize Pro，双击底部列表中你要扫描的硬盘，就会开始扫描了，扫描结束后可以在右侧看到分析<br><img src="https://cdn.hyh.ink/pics/2020/08/21/image04441a2e57a6d4f2.png#vwid=940&vhei=544"><br>整理之后的结果，搞的时候忘记截图了，还有个 50G 的 OneDrive #(喜极而泣)<br>在饼状图里可以看见我的 SbeamLibrary 很大，可以进入 details 里查看详细信息，翻了几层目录之后发现 CSGO 有足足 24.5G（明明卸载了还占用这么大），查找一番后发现 maps 文件夹很大，有足足 18.9G!<br><img src="https://cdn.hyh.ink/pics/2020/08/21/image507855440545aa5a.png#vwid=461&vhei=341"><br>然后去 OneDrive 里面把没必要的同步关了<br>整活完成，电脑多出 90G 盘，爽歪歪!  </p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 电脑研究 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>win10家庭版升级专业版的两种方法和密钥</title>
       <link href="/2022/02/14/win10-jia-ting-ban-sheng-ji-zhuan-ye-ban-de-liang-chong-fang-fa-he-mi-yao/"/>
       <url>/2022/02/14/win10-jia-ting-ban-sheng-ji-zhuan-ye-ban-de-liang-chong-fang-fa-he-mi-yao/</url>
       
-        <content type="html"><![CDATA[<h1 id="win10家庭版升级专业版的两种方法和密钥"><a href="#win10家庭版升级专业版的两种方法和密钥" class="headerlink" title="win10家庭版升级专业版的两种方法和密钥"></a>win10家庭版升级专业版的两种方法和密钥</h1><ul><li><p>win10家庭版升级专业版密钥：<br>VK7JG-NPHTM-C97JM-9MPGT-3V66T<br>4N7JM-CV98F-WY9XX-9D8CF-369TT<br>FMPND-XFTD4-67FJC-HDR8C-3YH26   </p></li><li><p>升级方法<br>方法一：直接升级<br>大部分电脑都可以直接升级，升级方法也很简单</p></li></ul><p>1.直接更改产品密钥，可以从上面的三个密钥中任选一个。输入后等待系统验证。<br><img src="https://img2018.cnblogs.com/i-beta/1849525/201912/1849525-20191230152606906-581938370.png">   </p><p>2.密钥通过系统验证后，进行下一步，会提示“升级你的windows版本”，我们点击“开始升级”按钮。如下图所示。<br><img src="https://img2018.cnblogs.com/i-beta/1849525/201912/1849525-20191230152743347-47345184.png">  </p><p>3.接下来系统就会升级，这个过程可能需要等一会，但是千万不要中断，否则很麻烦。中间也可能需要重启几次，升级完成后会有提示。<br><img src="https://img2018.cnblogs.com/i-beta/1849525/201912/1849525-20191230152806591-944784527.png">  </p><p>完成上面的步骤，重启电脑后，查看电脑属性，你就会发现你的电脑变成了专业版。据本博主测试，教育版，企业版，专业版，专业工作站，oem版的电脑版本都可以升级，只是输入不同的密钥即可。<br><img src="https://img2018.cnblogs.com/i-beta/1849525/201912/1849525-20191230152921316-37769004.png">   </p><p>方法二：<br>有的家庭版或者家庭中文版本用其他方式激活或者修改过本地计算机密钥服务器名称，输入任何密钥都无法验证，都是无效的。遇到这种情况，您只有通过镜像升级的方法升级。<br>具体过程  </p><p>1.从msdn下载专业版原版镜像。  </p><p>2.解压到c盘（系统盘）以外的其他盘，点setup即可  </p><p>3.在安装过程中选择保留文件和内容，所有的文件都不会丢失，过一会你就发现已经成了专业版了。</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="win10家庭版升级专业版的两种方法和密钥"><a href="#win10家庭版升级专业版的两种方法和密钥" class="headerlink" title="win10家庭版升级专业版的两种方法和密钥"></a>win10家庭版升级专业版的两种方法和密钥</h1><ul><li><p>win10家庭版升级专业版密钥：<br>VK7JG-NPHTM-C97JM-9MPGT-3V66T<br>4N7JM-CV98F-WY9XX-9D8CF-369TT<br>FMPND-XFTD4-67FJC-HDR8C-3YH26   </p></li><li><p>升级方法<br>方法一：直接升级<br>大部分电脑都可以直接升级，升级方法也很简单</p></li></ul><p>1.直接更改产品密钥，可以从上面的三个密钥中任选一个。输入后等待系统验证。</p><p><img src="/1/0.webp">   </p><p>2.密钥通过系统验证后，进行下一步，会提示“升级你的windows版本”，我们点击“开始升级”。如下图所示。<br><img src="https://img0.baidu.com/it/u=2312651024,3633751252&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=313">  </p><p>3.接下来系统就会升级，这个过程可能需要等一会，但是千万不要中断，否则很麻烦。中间也可能需要重启几次，升级完成后会有提示。<br><img src="https://img2018.cnblogs.com/i-beta/1849525/201912/1849525-20191230152806591-944784527.png">  </p><p>完成上面的步骤，重启电脑后，查看电脑属性，你就会发现你的电脑变成了专业版。据本博主测试，教育版，企业版，专业版，专业工作站，oem版的电脑版本都可以升级，只是输入不同的密钥即可。<br><img src="https://img2018.cnblogs.com/i-beta/1849525/201912/1849525-20191230152921316-37769004.png">   </p><p>方法二：<br>有的家庭版或者家庭中文版本用其他方式激活或者修改过本地计算机密钥服务器名称，输入任何密钥都无法验证，都是无效的。遇到这种情况，您只有通过镜像升级的方法升级。<br>具体过程  </p><p>1.从msdn下载专业版原版镜像。  </p><p>2.解压到c盘（系统盘）以外的其他盘，点setup即可  </p><p>3.在安装过程中选择保留文件和内容，所有的文件都不会丢失，过一会你就发现已经成了专业版了。</p>]]></content>
       
       
       
