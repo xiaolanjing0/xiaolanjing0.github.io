@@ -6,7 +6,7 @@
   <link href="https://xiaolanjing0.github.io/atom.xml" rel="self"/>
   
   <link href="https://xiaolanjing0.github.io/"/>
-  <updated>2022-02-14T07:16:25.428Z</updated>
+  <updated>2022-02-14T17:38:26.059Z</updated>
   <id>https://xiaolanjing0.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基础入门-操作系统&amp;名词&amp;文件下载&amp;反弹SHELL&amp;防火墙绕过</title>
+    <link href="https://xiaolanjing0.github.io/2022/02/15/ji-chu-ru-men-cao-zuo-xi-tong-ming-ci-wen-jian-xia-zai-fan-dan-shell-fang-huo-qiang-rao-guo/"/>
+    <id>https://xiaolanjing0.github.io/2022/02/15/ji-chu-ru-men-cao-zuo-xi-tong-ming-ci-wen-jian-xia-zai-fan-dan-shell-fang-huo-qiang-rao-guo/</id>
+    <published>2022-02-14T17:13:42.000Z</published>
+    <updated>2022-02-14T17:38:26.059Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;基础入门-操作系统-amp-名词-amp-文件下载-amp-反弹SHELL-amp-防火墙绕过&quot;&gt;&lt;a href=&quot;#基础入门-操作系统-amp-名词-amp-文件下载-amp-反弹SHELL-amp-防火墙绕过&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="网络安全(渗透)" scheme="https://xiaolanjing0.github.io/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>如何清理藏在你硬盘里的宝物</title>
