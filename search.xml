@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>1.1. Web技术演化</title>
+      <link href="/2022/03/04/1-1-web-ji-zhu-yan-hua/"/>
+      <url>/2022/03/04/1-1-web-ji-zhu-yan-hua/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-1-Web技术演化"><a href="#1-1-Web技术演化" class="headerlink" title="1.1. Web技术演化"></a>1.1. Web技术演化</h1><h2 id="1-1-1-简单网站"><a href="#1-1-1-简单网站" class="headerlink" title="1.1.1. 简单网站"></a>1.1.1. 简单网站</h2><h3 id="1-1-1-1-静态页面"><a href="#1-1-1-1-静态页面" class="headerlink" title="1.1.1.1. 静态页面"></a>1.1.1.1. 静态页面</h3><p>  Web技术在最初阶段，网站的主要内容是静态的，大多站点托管在ISP上，由文字和图片组成，制作和表现形式也是以表格为主。当时的用户行为也非常简单，基本只是浏览网页。  </p><h3 id="1-1-1-2-多媒体阶段"><a href="#1-1-1-2-多媒体阶段" class="headerlink" title="1.1.1.2. 多媒体阶段"></a>1.1.1.2. 多媒体阶段</h3><p> 随着技术的不断发展，音频、视频、Flash等多媒体技术诞生了。多媒体的加入使得网页变得更加生动形象，网页上的交互也给用户带来了更好的体验。   </p><h3 id="1-1-1-3-CGI阶段"><a href="#1-1-1-3-CGI阶段" class="headerlink" title="1.1.1.3. CGI阶段"></a>1.1.1.3. CGI阶段</h3><p>   渐渐的，多媒体已经不能满足人们的请求，于是CGI (Common Gateway Interface) 应运而生。CGI定义了Web服务器与外部应用程序之间的通信接口标准，因此Web服务器可以通过CGI执行外部程序，让外部程序根据Web请求内容生成动态的内容。</p><p>在这个时候，各种编程语言如PHP&#x2F;ASP&#x2F;JSP也逐渐加入市场，基于这些语言可以实现更加模块化的、功能更强大的应用程序  </p><h3 id="1-1-1-4-MVC"><a href="#1-1-1-4-MVC" class="headerlink" title="1.1.1.4. MVC"></a>1.1.1.4. MVC</h3><p>随着Web应用开发越来越标准化，出现了MVC等思想。MVC是Model&#x2F;View&#x2F;Control的缩写，Model用于封装数据和数据处理方法，视图View是数据的HTML展现，控制器Controller负责响应请求，协调Model和View。</p><p>Model，View和Controller的分开，是一种典型的关注点分离的思想，使得代码复用性和组织性更好，Web应用的配置性和灵活性也越来越好。而数据访问也逐渐通过面向对象的方式来替代直接的SQL访问，出现了ORM (Object Relation Mapping) 的概念。</p><p>除了MVC，类似的设计思想还有MVP、MVVM等。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 网络安全（渗透）学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>重磅爆料 ! Windows 12 已经在路上 (文末送书)</title>
       <link href="/2022/02/22/chong-bang-bao-liao-windows-12-yi-jing-zai-lu-shang-wen-mo-song-shu/"/>
       <url>/2022/02/22/chong-bang-bao-liao-windows-12-yi-jing-zai-lu-shang-wen-mo-song-shu/</url>

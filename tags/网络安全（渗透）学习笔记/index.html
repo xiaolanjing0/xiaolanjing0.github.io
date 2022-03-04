@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="归档, 小蓝鲸的博客">
+    <meta name="keywords" content="标签: 网络安全（渗透）学习笔记, 小蓝鲸的博客">
     <meta name="description" content="但行好事，莫问前程；前路有光，初心莫忘">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>归档 | 小蓝鲸的博客</title>
+    <title>标签: 网络安全（渗透）学习笔记 | 小蓝鲸的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -446,7 +446,177 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
+    /*样式一*/
+(function($){
+    $.fn.snow = function(options){
+    var $flake = $('<div id="snowbox" />').css({'position': 'absolute','z-index':'9999', 'top': '-50px'}).html('&#10052;'),
+    documentHeight  = $(document).height(),
+    documentWidth   = $(document).width(),
+    defaults = {
+        minSize     : 10,
+        maxSize     : 20,
+        newOn       : 1000,
+        flakeColor  : "#AFDAEF" /* 此处可以定义雪花颜色，若要白色可以改为#FFFFFF */
+    },
+    options = $.extend({}, defaults, options);
+    var interval= setInterval( function(){
+    var startPositionLeft = Math.random() * documentWidth - 100,
+    startOpacity = 0.5 + Math.random(),
+    sizeFlake = options.minSize + Math.random() * options.maxSize,
+    endPositionTop = documentHeight - 200,
+    endPositionLeft = startPositionLeft - 500 + Math.random() * 500,
+    durationFall = documentHeight * 10 + Math.random() * 5000;
+    $flake.clone().appendTo('body').css({
+        left: startPositionLeft,
+        opacity: startOpacity,
+        'font-size': sizeFlake,
+        color: options.flakeColor
+    }).animate({
+        top: endPositionTop,
+        left: endPositionLeft,
+        opacity: 0.2
+    },durationFall,'linear',function(){
+        $(this).remove()
+    });
+    }, options.newOn);
+    };
+})(jQuery);
+$(function(){
+    $.fn.snow({ 
+        minSize: 5, /* 定义雪花最小尺寸 */
+        maxSize: 50,/* 定义雪花最大尺寸 */
+        newOn: 300  /* 定义密集程度，数字越小越密集 */
+    });
+});
+/*样式二*/
+/* 控制下雪 */
+function snowFall(snow) {
+    /* 可配置属性 */
+    snow = snow || {};
+    this.maxFlake = snow.maxFlake || 200;   /* 最多片数 */
+    this.flakeSize = snow.flakeSize || 10;  /* 雪花形状 */
+    this.fallSpeed = snow.fallSpeed || 1;   /* 坠落速度 */
+}
+/* 兼容写法 */
+requestAnimationFrame = window.requestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    function(callback) { setTimeout(callback, 1000 / 60); };
+
+cancelAnimationFrame = window.cancelAnimationFrame ||
+    window.mozCancelAnimationFrame ||
+    window.webkitCancelAnimationFrame ||
+    window.msCancelAnimationFrame ||
+    window.oCancelAnimationFrame;
+/* 开始下雪 */
+snowFall.prototype.start = function(){
+    /* 创建画布 */
+    snowCanvas.apply(this);
+    /* 创建雪花形状 */
+    createFlakes.apply(this);
+    /* 画雪 */
+    drawSnow.apply(this)
+}
+/* 创建画布 */
+function snowCanvas() {
+    /* 添加Dom结点 */
+    var snowcanvas = document.createElement("canvas");
+    snowcanvas.id = "snowfall";
+    snowcanvas.width = window.innerWidth;
+    snowcanvas.height = document.body.clientHeight;
+    snowcanvas.setAttribute("style", "position:absolute; top: 0; left: 0; z-index: 1; pointer-events: none;");
+    document.getElementsByTagName("body")[0].appendChild(snowcanvas);
+    this.canvas = snowcanvas;
+    this.ctx = snowcanvas.getContext("2d");
+    /* 窗口大小改变的处理 */
+    window.onresize = function() {
+        snowcanvas.width = window.innerWidth;
+        /* snowcanvas.height = window.innerHeight */
+    }
+}
+/* 雪运动对象 */
+function flakeMove(canvasWidth, canvasHeight, flakeSize, fallSpeed) {
+    this.x = Math.floor(Math.random() * canvasWidth);   /* x坐标 */
+    this.y = Math.floor(Math.random() * canvasHeight);  /* y坐标 */
+    this.size = Math.random() * flakeSize + 2;          /* 形状 */
+    this.maxSize = flakeSize;                           /* 最大形状 */
+    this.speed = Math.random() * 1 + fallSpeed;         /* 坠落速度 */
+    this.fallSpeed = fallSpeed;                         /* 坠落速度 */
+    this.velY = this.speed;                             /* Y方向速度 */
+    this.velX = 0;                                      /* X方向速度 */
+    this.stepSize = Math.random() / 30;                 /* 步长 */
+    this.step = 0                                       /* 步数 */
+}
+flakeMove.prototype.update = function() {
+    var x = this.x,
+        y = this.y;
+    /* 左右摆动(余弦) */
+    this.velX *= 0.98;
+    if (this.velY <= this.speed) {
+        this.velY = this.speed
+    }
+    this.velX += Math.cos(this.step += .05) * this.stepSize;
+
+    this.y += this.velY;
+    this.x += this.velX;
+    /* 飞出边界的处理 */
+    if (this.x >= canvas.width || this.x <= 0 || this.y >= canvas.height || this.y <= 0) {
+        this.reset(canvas.width, canvas.height)
+    }
+};
+/* 飞出边界-放置最顶端继续坠落 */
+flakeMove.prototype.reset = function(width, height) {
+    this.x = Math.floor(Math.random() * width);
+    this.y = 0;
+    this.size = Math.random() * this.maxSize + 2;
+    this.speed = Math.random() * 1 + this.fallSpeed;
+    this.velY = this.speed;
+    this.velX = 0;
+};
+// 渲染雪花-随机形状（此处可修改雪花颜色！！！）
+flakeMove.prototype.render = function(ctx) {
+    var snowFlake = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+    snowFlake.addColorStop(0, "rgba(255, 255, 255, 0.9)");  /* 此处是雪花颜色，默认是白色 */
+    snowFlake.addColorStop(.5, "rgba(255, 255, 255, 0.5)"); /* 若要改为其他颜色，请自行查 */
+    snowFlake.addColorStop(1, "rgba(255, 255, 255, 0)");    /* 找16进制的RGB 颜色代码。 */
+    ctx.save();
+    ctx.fillStyle = snowFlake;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+};
+/* 创建雪花-定义形状 */
+function createFlakes() {
+    var maxFlake = this.maxFlake,
+        flakes = this.flakes = [],
+        canvas = this.canvas;
+    for (var i = 0; i < maxFlake; i++) {
+        flakes.push(new flakeMove(canvas.width, canvas.height, this.flakeSize, this.fallSpeed))
+    }
+}
+/* 画雪 */
+function drawSnow() {
+    var maxFlake = this.maxFlake,
+        flakes = this.flakes;
+    ctx = this.ctx, canvas = this.canvas, that = this;
+    /* 清空雪花 */
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var e = 0; e < maxFlake; e++) {
+        flakes[e].update();
+        flakes[e].render(ctx);
+    }
+    /*  一帧一帧的画 */
+    this.loop = requestAnimationFrame(function() {
+        drawSnow.apply(that);
+    });
+}
+/* 调用及控制方法 */
+var snow = new snowFall({maxFlake:60});
+snow.start();
+<div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -491,443 +661,82 @@
 <main class="content">
 
     
-    <div class="container archive-calendar">
+
+<div id="tags" class="container chip-container">
     <div class="card">
-        <div id="post-calendar" class="card-content"></div>
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
+            </div>
+            <div class="tag-chips">
+                
+                
+                <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%EF%BC%88%E6%B8%97%E9%80%8F%EF%BC%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="网络安全（渗透）学习笔记: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="网络安全（渗透）学习笔记" style="background-color: #F9EBEA;">网络安全（渗透）学习笔记
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E7%94%B5%E8%84%91%E7%A0%94%E7%A9%B6/" title="电脑研究: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="电脑研究" style="background-color: #F5EEF8;">电脑研究
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F/" title="网络安全(渗透): 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="网络安全(渗透)" style="background-color: #D5F5E3;">网络安全(渗透)
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+            </div>
+        </div>
     </div>
 </div>
 
-<script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
-<script type="text/javascript">
-    let myChart = echarts.init(document.getElementById('post-calendar'));
-
     
 
-    let option = {
-        title: {
-            top: 0,
-            text: '文章日历',
-            left: 'center',
-            textStyle: {
-                color: '#3C4858'
-            }
-        },
-        tooltip: {
-            padding: 10,
-            backgroundColor: '#555',
-            borderColor: '#777',
-            borderWidth: 1,
-            formatter: function (obj) {
-                var value = obj.value;
-                return '<div style="font-size: 14px;">' + value[0] + '：' + value[1] + '</div>';
-            }
-        },
-        visualMap: {
-            show: true,
-            showLabel: true,
-            categories: [0, 1, 2, 3, 4],
-            calculable: true,
-            inRange: {
-                symbol: 'rect',
-                color: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
-            },
-            itemWidth: 12,
-            itemHeight: 12,
-            orient: 'horizontal',
-            left: 'center',
-            bottom: 0
-        },
-        calendar: [{
-            left: 'center',
-            range: ["2021-03-04", "2022-03-04"],
-            cellSize: [13, 13],
-            splitLine: {
-                show: false
-            },
-            itemStyle: {
-                color: '#196127',
-                borderColor: '#fff',
-                borderWidth: 2
-            },
-            yearLabel: {
-                show: false
-            },
-            monthLabel: {
-                nameMap: 'cn',
-                fontSize: 11
-            },
-            dayLabel: {
-                formatter: '{start}  1st',
-                nameMap: 'cn',
-                fontSize: 11
-            }
-        }],
-        series: [{
-            type: 'heatmap',
-            coordinateSystem: 'calendar',
-            calendarIndex: 0,
-            data: [["2021-03-04", 0], ["2021-03-05", 0], ["2021-03-06", 0], ["2021-03-07", 0], ["2021-03-08", 0], ["2021-03-09", 0], ["2021-03-10", 0], ["2021-03-11", 0], ["2021-03-12", 0], ["2021-03-13", 0], ["2021-03-14", 0], ["2021-03-15", 0], ["2021-03-16", 0], ["2021-03-17", 0], ["2021-03-18", 0], ["2021-03-19", 0], ["2021-03-20", 0], ["2021-03-21", 0], ["2021-03-22", 0], ["2021-03-23", 0], ["2021-03-24", 0], ["2021-03-25", 0], ["2021-03-26", 0], ["2021-03-27", 0], ["2021-03-28", 0], ["2021-03-29", 0], ["2021-03-30", 0], ["2021-03-31", 0], ["2021-04-01", 0], ["2021-04-02", 0], ["2021-04-03", 0], ["2021-04-04", 0], ["2021-04-05", 0], ["2021-04-06", 0], ["2021-04-07", 0], ["2021-04-08", 0], ["2021-04-09", 0], ["2021-04-10", 0], ["2021-04-11", 0], ["2021-04-12", 0], ["2021-04-13", 0], ["2021-04-14", 0], ["2021-04-15", 0], ["2021-04-16", 0], ["2021-04-17", 0], ["2021-04-18", 0], ["2021-04-19", 0], ["2021-04-20", 0], ["2021-04-21", 0], ["2021-04-22", 0], ["2021-04-23", 0], ["2021-04-24", 0], ["2021-04-25", 0], ["2021-04-26", 0], ["2021-04-27", 0], ["2021-04-28", 0], ["2021-04-29", 0], ["2021-04-30", 0], ["2021-05-01", 0], ["2021-05-02", 0], ["2021-05-03", 0], ["2021-05-04", 0], ["2021-05-05", 0], ["2021-05-06", 0], ["2021-05-07", 0], ["2021-05-08", 0], ["2021-05-09", 0], ["2021-05-10", 0], ["2021-05-11", 0], ["2021-05-12", 0], ["2021-05-13", 0], ["2021-05-14", 0], ["2021-05-15", 0], ["2021-05-16", 0], ["2021-05-17", 0], ["2021-05-18", 0], ["2021-05-19", 0], ["2021-05-20", 0], ["2021-05-21", 0], ["2021-05-22", 0], ["2021-05-23", 0], ["2021-05-24", 0], ["2021-05-25", 0], ["2021-05-26", 0], ["2021-05-27", 0], ["2021-05-28", 0], ["2021-05-29", 0], ["2021-05-30", 0], ["2021-05-31", 0], ["2021-06-01", 0], ["2021-06-02", 0], ["2021-06-03", 0], ["2021-06-04", 0], ["2021-06-05", 0], ["2021-06-06", 0], ["2021-06-07", 0], ["2021-06-08", 0], ["2021-06-09", 0], ["2021-06-10", 0], ["2021-06-11", 0], ["2021-06-12", 0], ["2021-06-13", 0], ["2021-06-14", 0], ["2021-06-15", 0], ["2021-06-16", 0], ["2021-06-17", 0], ["2021-06-18", 0], ["2021-06-19", 0], ["2021-06-20", 0], ["2021-06-21", 0], ["2021-06-22", 0], ["2021-06-23", 0], ["2021-06-24", 0], ["2021-06-25", 0], ["2021-06-26", 0], ["2021-06-27", 0], ["2021-06-28", 0], ["2021-06-29", 0], ["2021-06-30", 0], ["2021-07-01", 0], ["2021-07-02", 0], ["2021-07-03", 0], ["2021-07-04", 0], ["2021-07-05", 0], ["2021-07-06", 0], ["2021-07-07", 0], ["2021-07-08", 0], ["2021-07-09", 0], ["2021-07-10", 0], ["2021-07-11", 0], ["2021-07-12", 0], ["2021-07-13", 0], ["2021-07-14", 0], ["2021-07-15", 0], ["2021-07-16", 0], ["2021-07-17", 0], ["2021-07-18", 0], ["2021-07-19", 0], ["2021-07-20", 0], ["2021-07-21", 0], ["2021-07-22", 0], ["2021-07-23", 0], ["2021-07-24", 0], ["2021-07-25", 0], ["2021-07-26", 0], ["2021-07-27", 0], ["2021-07-28", 0], ["2021-07-29", 0], ["2021-07-30", 0], ["2021-07-31", 0], ["2021-08-01", 0], ["2021-08-02", 0], ["2021-08-03", 0], ["2021-08-04", 0], ["2021-08-05", 0], ["2021-08-06", 0], ["2021-08-07", 0], ["2021-08-08", 0], ["2021-08-09", 0], ["2021-08-10", 0], ["2021-08-11", 0], ["2021-08-12", 0], ["2021-08-13", 0], ["2021-08-14", 0], ["2021-08-15", 0], ["2021-08-16", 0], ["2021-08-17", 0], ["2021-08-18", 0], ["2021-08-19", 0], ["2021-08-20", 0], ["2021-08-21", 0], ["2021-08-22", 0], ["2021-08-23", 0], ["2021-08-24", 0], ["2021-08-25", 0], ["2021-08-26", 0], ["2021-08-27", 0], ["2021-08-28", 0], ["2021-08-29", 0], ["2021-08-30", 0], ["2021-08-31", 0], ["2021-09-01", 0], ["2021-09-02", 0], ["2021-09-03", 0], ["2021-09-04", 0], ["2021-09-05", 0], ["2021-09-06", 0], ["2021-09-07", 0], ["2021-09-08", 0], ["2021-09-09", 0], ["2021-09-10", 0], ["2021-09-11", 0], ["2021-09-12", 0], ["2021-09-13", 0], ["2021-09-14", 0], ["2021-09-15", 0], ["2021-09-16", 0], ["2021-09-17", 0], ["2021-09-18", 0], ["2021-09-19", 0], ["2021-09-20", 0], ["2021-09-21", 0], ["2021-09-22", 0], ["2021-09-23", 0], ["2021-09-24", 0], ["2021-09-25", 0], ["2021-09-26", 0], ["2021-09-27", 0], ["2021-09-28", 0], ["2021-09-29", 0], ["2021-09-30", 0], ["2021-10-01", 0], ["2021-10-02", 0], ["2021-10-03", 0], ["2021-10-04", 0], ["2021-10-05", 0], ["2021-10-06", 0], ["2021-10-07", 0], ["2021-10-08", 0], ["2021-10-09", 0], ["2021-10-10", 0], ["2021-10-11", 0], ["2021-10-12", 0], ["2021-10-13", 0], ["2021-10-14", 0], ["2021-10-15", 0], ["2021-10-16", 0], ["2021-10-17", 0], ["2021-10-18", 0], ["2021-10-19", 0], ["2021-10-20", 0], ["2021-10-21", 0], ["2021-10-22", 0], ["2021-10-23", 0], ["2021-10-24", 0], ["2021-10-25", 0], ["2021-10-26", 0], ["2021-10-27", 0], ["2021-10-28", 0], ["2021-10-29", 0], ["2021-10-30", 0], ["2021-10-31", 0], ["2021-11-01", 0], ["2021-11-02", 0], ["2021-11-03", 0], ["2021-11-04", 0], ["2021-11-05", 0], ["2021-11-06", 0], ["2021-11-07", 0], ["2021-11-08", 0], ["2021-11-09", 0], ["2021-11-10", 0], ["2021-11-11", 0], ["2021-11-12", 0], ["2021-11-13", 0], ["2021-11-14", 0], ["2021-11-15", 0], ["2021-11-16", 0], ["2021-11-17", 0], ["2021-11-18", 0], ["2021-11-19", 0], ["2021-11-20", 0], ["2021-11-21", 0], ["2021-11-22", 0], ["2021-11-23", 0], ["2021-11-24", 0], ["2021-11-25", 0], ["2021-11-26", 0], ["2021-11-27", 0], ["2021-11-28", 0], ["2021-11-29", 0], ["2021-11-30", 0], ["2021-12-01", 0], ["2021-12-02", 0], ["2021-12-03", 0], ["2021-12-04", 0], ["2021-12-05", 0], ["2021-12-06", 0], ["2021-12-07", 0], ["2021-12-08", 0], ["2021-12-09", 0], ["2021-12-10", 0], ["2021-12-11", 0], ["2021-12-12", 0], ["2021-12-13", 0], ["2021-12-14", 0], ["2021-12-15", 0], ["2021-12-16", 0], ["2021-12-17", 0], ["2021-12-18", 0], ["2021-12-19", 0], ["2021-12-20", 0], ["2021-12-21", 0], ["2021-12-22", 0], ["2021-12-23", 0], ["2021-12-24", 0], ["2021-12-25", 0], ["2021-12-26", 0], ["2021-12-27", 0], ["2021-12-28", 0], ["2021-12-29", 0], ["2021-12-30", 0], ["2021-12-31", 0], ["2022-01-01", 0], ["2022-01-02", 0], ["2022-01-03", 0], ["2022-01-04", 0], ["2022-01-05", 0], ["2022-01-06", 0], ["2022-01-07", 0], ["2022-01-08", 0], ["2022-01-09", 0], ["2022-01-10", 0], ["2022-01-11", 0], ["2022-01-12", 0], ["2022-01-13", 0], ["2022-01-14", 0], ["2022-01-15", 0], ["2022-01-16", 0], ["2022-01-17", 0], ["2022-01-18", 0], ["2022-01-19", 0], ["2022-01-20", 0], ["2022-01-21", 0], ["2022-01-22", 0], ["2022-01-23", 0], ["2022-01-24", 0], ["2022-01-25", 0], ["2022-01-26", 0], ["2022-01-27", 0], ["2022-01-28", 0], ["2022-01-29", 0], ["2022-01-30", 0], ["2022-01-31", 0], ["2022-02-01", 0], ["2022-02-02", 0], ["2022-02-03", 0], ["2022-02-04", 0], ["2022-02-05", 0], ["2022-02-06", 0], ["2022-02-07", 0], ["2022-02-08", 0], ["2022-02-09", 0], ["2022-02-10", 0], ["2022-02-11", 1], ["2022-02-12", 1], ["2022-02-13", 0], ["2022-02-14", 1], ["2022-02-15", 1], ["2022-02-16", 0], ["2022-02-17", 0], ["2022-02-18", 0], ["2022-02-19", 0], ["2022-02-20", 0], ["2022-02-21", 0], ["2022-02-22", 1], ["2022-02-23", 0], ["2022-02-24", 0], ["2022-02-25", 0], ["2022-02-26", 0], ["2022-02-27", 0], ["2022-02-28", 0], ["2022-03-01", 0], ["2022-03-02", 0], ["2022-03-03", 0], ["2022-03-04", 1]]
-        }]
-
-    };
-
-    myChart.setOption(option);
-</script>
-
-    
-
-    
-
-    <div id="cd-timeline" class="container">
-        
-        <div class="cd-timeline-block">
-
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
             
             
-            
-            <div class="cd-timeline-img year" data-aos="zoom-in-up">
-                <a href="/archives/2022">2022</a>
-            </div>
-            
-
-            
-            
-            
-            <div class="cd-timeline-img month" data-aos="zoom-in-up">
-                <a href="/archives/2022/03">03</a>
-            </div>
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>04</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2022/03/04/1-1-web-ji-zhu-yan-hua/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="1.1. Web技术演化">
-                                
-                                <span class="card-title">1.1. Web技术演化</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    1.1. Web技术演化1.1.1. 简单网站1.1.1.1. 静态页面  Web技术在最初阶段，网站的主要内容是静态的，大多站点托管在ISP上，由文字和图片组成，制作和表现形式也是以表格为主。当时的用户行为也非常简单，基本只是浏览网页。 
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2022-03-04
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-user fa-fw"></i>
-                                    xiaolanjing
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
+            <div class="article tag-post col s12 m6 l4" data-tags="网络安全（渗透）学习笔记" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2022/03/04/1-1-web-ji-zhu-yan-hua/">
+                        <div class="card-image tag-image">
                             
-                            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%EF%BC%88%E6%B8%97%E9%80%8F%EF%BC%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="chip bg-color">网络安全（渗透）学习笔记</span></a>
                             
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="1.1. Web技术演化">
+                            
+                            <span class="card-title">1.1. Web技术演化</span>
                         </div>
-                        
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-04
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                xiaolanjing
+                                
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-            
-            <div class="cd-timeline-img month" data-aos="zoom-in-up">
-                <a href="/archives/2022/02">02</a>
             </div>
             
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>22</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2022/02/22/chong-bang-bao-liao-windows-12-yi-jing-zai-lu-shang-wen-mo-song-shu/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="重磅爆料 ! Windows 12 已经在路上 (文末送书)">
-                                
-                                <span class="card-title">重磅爆料 ! Windows 12 已经在路上 (文末送书)</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    重磅爆料 ! Windows 12 已经在路上 (文末送书)据 MSPoweruser 报道，Windows 11 虽然刚刚开始步入正轨，但最新爆料称微软已经在开启下一个计划，Windows 12 的开发将在 3 月份开始。![]()德国科
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-user fa-fw"></i>
-                                    xiaolanjing
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/%E7%94%B5%E8%84%91%E7%A0%94%E7%A9%B6/"><span class="chip bg-color">电脑研究</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
         </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>15</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2022/02/15/ji-chu-ru-men-cao-zuo-xi-tong-ming-ci-wen-jian-xia-zai-fan-dan-shell-fang-huo-qiang-rao-guo/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="基础入门-操作系统&amp;名词&amp;文件下载&amp;反弹SHELL&amp;防火墙绕过">
-                                
-                                <span class="card-title">基础入门-操作系统&amp;名词&amp;文件下载&amp;反弹SHELL&amp;防火墙绕过</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    基础入门-操作系统&amp;名词&amp;文件下载&amp;反弹SHELL&amp;防火墙绕过知识点1、名词解释-渗透测试-漏洞&amp;攻击&amp;后门&amp;代码&amp;专业词2、必备技能-操作系统-用途&amp;命令&amp;权
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2022-02-15
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-user fa-fw"></i>
-                                    xiaolanjing
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F/"><span class="chip bg-color">网络安全(渗透)</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>14</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2022/02/14/ru-he-qing-li-cang-zai-ni-ying-pan-li-de-bao-wu/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="如何清理藏在你硬盘里的宝物">
-                                
-                                <span class="card-title">如何清理藏在你硬盘里的宝物</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    如何清理藏在你硬盘里的宝物事情是这样的 @(泪)，前几天，为了给我的 256G 的 手机做个备份，好降级 MIUI12，发现我 256G 的破 SSD 居然只剩下 10G 了，不知原因如何，于是在网上找了点分析硬盘空间的小工具。  
-
-工具
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2022-02-14
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-user fa-fw"></i>
-                                    xiaolanjing
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/%E7%94%B5%E8%84%91%E7%A0%94%E7%A9%B6/"><span class="chip bg-color">电脑研究</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>12</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2022/02/12/win10-xi-tong-duo-liao-3d-dui-xiang-wen-jian-jia-zen-me-ban/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Win10 系统多了 3D 对象文件夹怎么办">
-                                
-                                <span class="card-title">Win10 系统多了 3D 对象文件夹怎么办</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Win10系统多了3D对象文件夹怎么办？
-Win10去掉3D对象文件夹：
-
-1、按下WIN+R，然后输入regedit 回车；
-2、然后找到：
-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Cu
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2022-02-12
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-user fa-fw"></i>
-                                    xiaolanjing
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                        <div class="card-action article-tags">
-                            
-                            <a href="/tags/%E7%94%B5%E8%84%91%E7%A0%94%E7%A9%B6/"><span class="chip bg-color">电脑研究</span></a>
-                            
-                        </div>
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="cd-timeline-block">
-
-            
-            
-
-            
-            
-
-            
-            <div class="cd-timeline-img day" data-aos="zoom-in-up">
-                <span>11</span>
-            </div>
-            <article class="cd-timeline-content" data-aos="fade-up">
-                <div class="article col s12 m6">
-                    <div class="card">
-                        <a href="/2022/02/11/hello-world/">
-                            <div class="card-image">
-                                
-                                
-                                <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                                
-                                <span class="card-title">Hello World</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="summary block-with-text">
-                                
-                                    Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                                
-                            </div>
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="far fa-clock fa-fw icon-date"></i>2022-02-11
-                                </span>
-                                <span class="publish-author">
-                                    
-                                    <i class="fas fa-user fa-fw"></i>
-                                    xiaolanjing
-                                    
-                                </span>
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-    </div>
-
+    </article>
 </main>
 
 
